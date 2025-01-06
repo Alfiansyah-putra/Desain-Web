@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #333;
+            text-decoration: none;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #007bff;
+        }
+        .profile-section {
+            max-width: 1200px;
+            margin: 100px auto 2rem;
+            padding: 0 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h1, h2 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .skill-bar {
+            background: #eee;
+            height: 20px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        .skill-progress {
+            background: #007bff;
+            height: 100%;
+            border-radius: 10px;
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+        @media (max-width: 768px) {
+            .profile-section {
+                padding: 0 1rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="profile-section">
+        <h1>Profil Saya</h1>
+        
+        <div class="card">
+            <h2>Pengalaman Kerja</h2>
+            <div class="experience-item">
+                <h3>Freelance Illustrator</h3>
+                <p>+ Berkolaborasi dengan illustrator lain untuk menghasilkan karya digital.</p>
+                <p>+ Menghasilkan lebih dari 10 karya digital yang digunakan dalam kampanye pemasaran klien.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Pendidikan</h2>
+            <div class="education-item">
+                <h3>S1 Teknik Informatika</h3>
+                <p>Universitas PGRI | 2000 - 2025</p>
+                <p>Saya bangga kuliah di UPGRIS</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Keahlian Pemrograman</h2>
+            <div class="skill-item">
+                <p>HTML/CSS</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-progress="90"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <p>JavaScript</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-progress="85"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <p>PYTHON</p>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-progress="80"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function handleScroll() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect();
+                if (cardPosition.top < window.innerHeight * 0.8) {
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const progress = bar.getAttribute('data-progress');
+                bar.style.width = `${progress}%`;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            handleScroll();
+            setTimeout(animateSkills, 500);
+        });
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>

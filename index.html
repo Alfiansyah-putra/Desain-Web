@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+        .navbar {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #333;
+            text-decoration: none;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #007bff;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+            object-fit: cover;
+            animation: fadeIn 1s ease;
+        }
+        .greeting {
+            color: #007bff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+        h1 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+        .hero-text {
+            animation: fadeIn 1s ease 0.9s forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                gap: 1rem;
+            }
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="hero">
+        <div class="hero-content">
+            <img src="image/WhatsApp Image 2025-01-05 at 23.14.49_caffb171.jpg" alt="Profile Picture" class="profile-img">
+            <div class="greeting"></div>
+            <h1>Selamat Datang di Portfolio Saya</h1>
+            <p class="hero-text">Saya adalah seorang profesional dengan keahlian ganda sebagai programmer dan illustrator. Dengan pengalaman lebih dari [X tahun], saya telah menciptakan solusi perangkat lunak yang efisien dan karya visual yang unik. Kombinasi kemampuan teknis dan seni ini memungkinkan saya untuk menghasilkan produk yang tidak hanya fungsional tetapi juga estetis.</p>
+        </div>
+    </main>
+
+    <script>
+        function setGreeting() {
+            const hour = new Date().getHours();
+            const greetingElement = document.querySelector('.greeting');
+            let greeting;
+
+            if (hour < 12) greeting = "Selamat Pagi!";
+            else if (hour < 15) greeting = "Selamat Siang!";
+            else if (hour < 18) greeting = "Selamat Sore!";
+            else greeting = "Selamat Malam!";
+
+            greetingElement.textContent = greeting;
+        }
+
+        document.addEventListener('DOMContentLoaded', setGreeting);
+    </script>
+</body>
+</html>
